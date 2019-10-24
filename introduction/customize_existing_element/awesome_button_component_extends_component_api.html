@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <awesome-button style="border:2px solid red; width:5px;">test</awesome-button>
+        <!-- add component behaviour on an html element -->
+
+        <button is="awesome-button">test</button>
+
+        <!-- 
+            note the 'is' keyword:
+
+                It is a proposed extension that appears in the Custom Elements specification
+
+                It allows you to say that an existing, standard element is really a custom element
+                which allows for backwards compatibility. If custom elements are not supported by the browser (the spec is still a draft and has very limited browser support) then it will fall back to the default behaviour.
+         -->
+        <script>
+            class AwesomeButtonComponent extends HTMLButtonElement {
+                constructor() {
+                    super();
+                    
+                    //this.addEventListener('click', () => {
+                    document.querySelector('awesome-button').addEventListener('click', () => {
+                        alert('Great job!');
+                    }); 
+                }
+            }
+        
+            customElements.define('awesome-button', AwesomeButtonComponent, {extends: 'button'});    
+
+
+        /*
+            Notes:
+
+                We have to define a constructor which always does a super() call first as well.
+
+                We hook into the click event by adding a new event listener (note we have to bind it on component selector and not on 'this' ) and display an alert box.
+
+                We need to tell the Custom Elements Registry which native HTML element is being extended by adding a third parameter to the define() method. Again, this is a required argument, defined by the Custom Elements Spec, to notify the HTML parser which interface needs to be extended.
+        */
+        </script>
+    </body>
+</html>

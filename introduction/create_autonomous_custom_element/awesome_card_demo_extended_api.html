@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+
+
+        <awesome-card greeting="Hello world!"></awesome-card>
+        <script>
+           // Create an ES6 class which extends HTMLElement
+                class AwesomeCardComponent extends HTMLElement {
+                constructor() {
+                    super();
+                    
+                    this.innerHTML = this.greeting;
+                }
+                
+                    get greeting() {
+                        return this.getAttribute('greeting');
+                    }
+                    
+                    set greeting(val) {
+                        if (val) {
+                        this.setAttribute('greeting', val);
+                        } else {
+                        this.removeAttribute('greeting');
+                        }
+                    }
+                }
+
+                // Register our awesome card component to the Custom Elements Registry
+                customElements.define('awesome-card', AwesomeCardComponent);
+
+
+        /*
+            ### NOTES FOR ABOVE:
+
+                The class contains a constructor which always does a super() call first. This ensures that the component inherits the correct prototype chain and all properties and methods of the class it extends. Realize that this is required by the Custom Elements Spec.
+
+                We’re using the this keyword to get the attributes value and assign it to the innerHTML of the component. This refers to the DOM element itself and is a default feature of the Custom Elements Spec.
+
+                We defined both get and set methods to get the attribute’s value and reflect properties to attributes to sync the JavaScript state with the component’s DOM.
+
+        */
+            
+        </script>
+    </body>
+</html>

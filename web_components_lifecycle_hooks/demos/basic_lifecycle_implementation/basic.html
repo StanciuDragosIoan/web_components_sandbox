@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+
+
+        <awesome-card greeting="Hello world!"></awesome-card>
+        <script>
+           // Create an ES6 class which extends HTMLElement
+                class AwesomeCardComponent extends HTMLElement {
+                    
+                    //lifecycle methods
+
+                    constructor() {
+                        super();
+                        
+                        this.innerHTML = this.greeting;
+                    }
+
+                    connectedCallback() {
+                        console.log('connected callback');
+                    }
+
+                    disconnectedCallback() {
+                        console.log('disconnected callback');
+                    }
+
+                    attributeChangedCallback(name, oldValue, newValue) {
+                        console.log('attribute changed see args for description');
+                    }
+
+                    adoptedCallback() {
+                        console.log('addopted callback');
+                    }
+
+
+                    //regular methods
+                    get greeting() {
+                        return this.getAttribute('greeting');
+                    }
+                    
+                    set greeting(val) {
+                        if (val) {
+                        this.setAttribute('greeting', val);
+                        } else {
+                        this.removeAttribute('greeting');
+                        }
+                    }
+                    
+                }
+
+                // Register our awesome card component to the Custom Elements Registry
+                customElements.define('awesome-card', AwesomeCardComponent);
+
+ 
+            
+        </script>
+    </body>
+</html>

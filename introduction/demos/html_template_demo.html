@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- fragment  (note rendered initially but 'renderable at runtime with JS' -->
+        <template>
+            <h1>The ultimate guide to Web Components!</h1>
+            <p>What do you want to learn about Web Components today?</p>
+        </template>
+
+
+        <p id="insertTemplate"></p>
+
+        <button onclick="testHtmlTemplate()">Test html template</button>
+    </body>
+
+    <script>
+        function testHtmlTemplate () {
+            const template = document.querySelector('template');
+            console.log(template);
+            document.querySelector('#insertTemplate').appendChild(template.content);
+        }
+    </script>
+</html>

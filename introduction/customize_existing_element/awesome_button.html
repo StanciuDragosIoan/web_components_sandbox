@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <awesome-button></awesome-button>
+        <script>
+            class AwesomeButtonComponent extends HTMLButtonElement {
+            // This is where the component's API lives
+            }
+
+            customElements.define('awesome-button', AwesomeButtonComponent, {extends: 'button'}); 
+            
+            
+            /*
+                And there we go. We’ve successfully extended the native button element in our own awesome button component and by doing this we don’t have to worry about having to implement native properties, methods and listeners. We can put complete focus extending functionalities instead of reinventing the wheel, enabling us to uncover the true potential of Web Components.
+            */
+        </script>
+    </body>
+</html>
