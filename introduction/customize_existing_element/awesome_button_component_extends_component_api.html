@@ -26,8 +26,8 @@
                 constructor() {
                     super();
                     
-                    //this.addEventListener('click', () => {
-                    document.querySelector('awesome-button').addEventListener('click', () => {
+                    this.addEventListener('click', () => {
+                    //document.querySelector('awesome-button').addEventListener('click', () => {
                         alert('Great job!');
                     }); 
                 }
@@ -41,7 +41,7 @@
 
                 We have to define a constructor which always does a super() call first as well.
 
-                We hook into the click event by adding a new event listener (note we have to bind it on component selector and not on 'this' ) and display an alert box.
+                We hook into the click event by adding a new event listener (note we have to bind it on  'this' ) and display an alert box.
 
                 We need to tell the Custom Elements Registry which native HTML element is being extended by adding a third parameter to the define() method. Again, this is a required argument, defined by the Custom Elements Spec, to notify the HTML parser which interface needs to be extended.
         */
